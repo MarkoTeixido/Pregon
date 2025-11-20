@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout código
+      uses: actions/checkout@v4
+    
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    
+    - name: 📦 Verificar instalación
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-ai.txt
+    
+    - name: ✅ Verificar imports
+      run: |
+        python -c "from src.mcp.server import PregonMCPServer; print('✅ MCP Server OK')"
+        python -c "from src.scrapers.unvime_scraper import UNVimeScraper; print('✅ Scraper OK')"
+        python -c "from src.ai.chatbot import CalendarioChatbot; print('✅ Chatbot OK')"
+    
+    - name: 📊 Información del sistema
+      run: |
+        echo "### 🐍 Python Version" >> $GITHUB_STEP_SUMMARY
+        python --version >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📦 Paquetes Instalados" >> $GITHUB_STEP_SUMMARY
+        pip list >> $GITHUB_STEP_SUMMARY
