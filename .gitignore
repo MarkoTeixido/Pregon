@@ -1,48 +1,144 @@
-# .gitignore
+# .gitignore - Versión Profesional
 
+# ============================================
 # Python
+# ============================================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ============================================
+# Virtual Environments
+# ============================================
 venv/
+.venv/
 env/
 ENV/
-*.egg-info/
-dist/
-build/
+env.bak/
+venv.bak/
 
-# Environment variables
-.env
-
-# IDE
+# ============================================
+# IDEs
+# ============================================
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# OS
+*~
 .DS_Store
 Thumbs.db
 
-# Logs
+# ============================================
+# Testing & Coverage
+# ============================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
 *.log
+.hypothesis/
+
+# ============================================
+# Logs
+# ============================================
 logs/
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Testing
-debug_*.html
+# ============================================
+# Cache
+# ============================================
+cache/
+*.cache
+.cache/
 
+# ============================================
+# Environment Variables
+# ============================================
+.env
+.env.local
+.env.production
+.env.*.local
+
+# ============================================
 # Credentials
+# ============================================
 credentials/
-credentials/*.json
-!credentials/.gitkeep
-credentials/token.json
+*.json
+!requirements*.txt
 
-# Database
-*.db
-*.sqlite
+# ============================================
+# Docker
+# ============================================
+.dockerignore
 
-# Temporary files
-tmp/
-temp/
+# ============================================
+# Build artifacts
+# ============================================
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ============================================
+# OS
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ============================================
+# Jupyter Notebook
+# ============================================
+.ipynb_checkpoints
+*.ipynb
+
+# ============================================
+# mypy
+# ============================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ============================================
+# Pyre
+# ============================================
+.pyre/
+
+# ============================================
+# pytype
+# ============================================
+.pytype/
+
+# ============================================
+# Cython
+# ============================================
+cython_debug/
