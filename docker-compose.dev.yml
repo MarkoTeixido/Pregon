@@ -1,0 +1,23 @@
+# docker-compose.dev.yml
+version: '3.9'
+
+services:
+  pregon-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: pregon-dev
+    volumes:
+      - .:/app
+      - /app/venv
+    environment:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=DEBUG
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    command: ["python", "run.py"]
+    stdin_open: true
+    tty: true

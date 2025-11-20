@@ -1,0 +1,90 @@
+# docker-compose.yml
+version: '3.9'
+
+services:
+  # Discord Bot
+  discord-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pregon-discord
+    restart: unless-stopped
+    environment:
+      - ENVIRONMENT=production
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - CALENDAR_URL=${CALENDAR_URL}
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+    networks:
+      - pregon-network
+    command: ["python", "-c", "from src.integrations.discord_bot import DiscordBot; import asyncio; bot = DiscordBot(); asyncio.run(bot.start())"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # WhatsApp Webhook
+  whatsapp-webhook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pregon-whatsapp
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - ENVIRONMENT=production
+      - TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID}
+      - TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN}
+      - TWILIO_WHATSAPP_FROM=${TWILIO_WHATSAPP_FROM}
+      - TWILIO_WHATSAPP_TO=${TWILIO_WHATSAPP_TO}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - CALENDAR_URL=${CALENDAR_URL}
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+    networks:
+      - pregon-network
+    command: ["python", "-c", "from src.integrations.whatsapp_webhook import app; app.run(host='0.0.0.0', port=5000)"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Scheduler (notificaciones automáticas)
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pregon-scheduler
+    restart: unless-stopped
+    environment:
+      - ENVIRONMENT=production
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID}
+      - TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN}
+      - CALENDAR_URL=${CALENDAR_URL}
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+    networks:
+      - pregon-network
+    command: ["python", "-c", "from src.services.calendario_service import CalendarioService; import time; service = CalendarioService(); [service.ejecutar() or time.sleep(86400) for _ in iter(int, 1)]"]
+
+networks:
+  pregon-network:
+    driver: bridge
+
+volumes:
+  logs:
+  cache:

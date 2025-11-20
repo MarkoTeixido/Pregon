@@ -1,0 +1,35 @@
+name: Rollback
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag to rollback to (e.g., v1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout código
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.version }}
+    
+    - name: 🚂 Install Railway CLI
+      run: npm i -g @railway/cli
+    
+    - name: ⏪ Rollback to ${{ github.event.inputs.version }}
+      run: |
+        railway up --service discord-bot
+        railway up --service whatsapp-webhook
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    
+    - name: 📢 Rollback notification
+      run: |
+        echo "### ⏪ Rollback Completed" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Rolled back to version: ${{ github.event.inputs.version }}" >> $GITHUB_STEP_SUMMARY

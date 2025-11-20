@@ -1,0 +1,59 @@
+# .dockerignore
+# No incluir estos archivos en la imagen Docker
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+*.cover
+coverage.xml
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+
+# Logs
+logs/
+*.log
+
+# Cache
+cache/
+*.cache
+
+# Credentials (se inyectan por env vars)
+credentials/
+.env
+.env.local
+.env.production
+
+# Documentation
+README.md
+docs/
+*.md
+
+# Others
+.DS_Store
+Thumbs.db

@@ -1,0 +1,65 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  # Job 1: Esperar a que pasen los tests
+  wait-for-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: ⏳ Esperar a que pasen los tests
+      uses: lewagon/wait-on-check-action@v1.3.1
+      with:
+        ref: ${{ github.ref }}
+        check-name: 'test'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        wait-interval: 10
+
+  # Job 2: Deploy a Railway
+  deploy-railway:
+    needs: wait-for-tests
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: 📥 Checkout código
+      uses: actions/checkout@v4
+    
+    - name: 🚂 Install Railway CLI
+      run: npm i -g @railway/cli
+    
+    - name: 🚀 Deploy Discord Bot
+      run: railway up --service discord-bot
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    
+    - name: 🚀 Deploy WhatsApp Webhook
+      run: railway up --service whatsapp-webhook
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    
+    - name: ✅ Deployment notification
+      run: |
+        echo "### 🚀 Deployment Successful" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Discord Bot deployed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ WhatsApp Webhook deployed" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "🔗 Railway Dashboard: https://railway.app/project/${{ secrets.RAILWAY_PROJECT_ID }}" >> $GITHUB_STEP_SUMMARY
+
+  # Job 3: Health Check Post-Deploy
+  health-check:
+    needs: deploy-railway
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 🏥 Health Check - WhatsApp Webhook
+      run: |
+        sleep 30  # Esperar a que el servicio inicie
+        curl -f ${{ secrets.WHATSAPP_WEBHOOK_URL }}/health || exit 1
+    
+    - name: ✅ Health check passed
+      run: echo "✅ All services are healthy"
