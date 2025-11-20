@@ -11,6 +11,7 @@ from src.ai.llm_client import get_llm_client
 from src.models.evento import Evento
 from src.services.calendario_service import CalendarioService
 from src.utils.logger import setup_logger
+from src.utils.validators import sanitizar_texto, validar_fecha
 
 
 class CalendarioChatbot:
@@ -25,7 +26,7 @@ class CalendarioChatbot:
         self.llm = get_llm_client()
         self.calendario_service = CalendarioService()
         
-        # ✅ NUEVO: Integrar MCP Server
+        # Integrar MCP Server
         try:
             from src.mcp.server import get_mcp_server
             self.mcp_server = get_mcp_server()
@@ -114,7 +115,7 @@ Categorías de eventos:
                 # Obtener todos los eventos
                 todos_eventos = self._obtener_todos_eventos()
                 
-                # ✅ USAR FILTRO INTELIGENTE
+                # USAR FILTRO INTELIGENTE
                 from src.services.evento_filter import EventoFilter
                 filtro = EventoFilter()
                 contexto_eventos = filtro.filtrar(pregunta, todos_eventos)
@@ -300,7 +301,7 @@ INSTRUCCIONES:
             return []
     
     # ============================================================================
-    # ✅ MÉTODOS MCP (Model Context Protocol)
+    # MÉTODOS MCP (Model Context Protocol)
     # ============================================================================
     
     async def ejecutar_herramienta_mcp(self, nombre: str, argumentos: dict = None):

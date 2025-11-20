@@ -10,6 +10,7 @@ from typing import List
 import re
 from src.scrapers.base import BaseScraper
 from src.models.evento import Evento
+from src.utils.cache import get_cache
 from src.config.settings import settings
 from src.config.constants import (
     SCRAPING_TIMEOUT,
@@ -52,6 +53,7 @@ class UNVimeScraper(BaseScraper):
     def descargar_contenido(self) -> str:
         """
         Descarga el HTML de la página del calendario.
+        Usa caché para evitar descargas repetidas.
         
         Returns:
             Contenido HTML de la página
@@ -59,6 +61,15 @@ class UNVimeScraper(BaseScraper):
         Raises:
             requests.exceptions.RequestException: Si falla la descarga
         """
+        # INTENTAR OBTENER DEL CACHÉ PRIMERO
+        cache = get_cache()
+        cached_content = cache.get('calendario_html')
+        
+        if cached_content:
+            self.logger.info("📦 Usando calendario desde caché")
+            return cached_content
+        
+        # Si no está en caché, descargar
         self.logger.info(f"Descargando calendario desde: {self.url}")
         
         headers = {
@@ -72,16 +83,21 @@ class UNVimeScraper(BaseScraper):
         )
         response.raise_for_status()
         
-        self.logger.info(f"Página descargada: {len(response.text)} caracteres")
+        contenido = response.text
+        self.logger.info(f"Página descargada: {len(contenido)} caracteres")
+        
+        # ✅ GUARDAR EN CACHÉ
+        cache.set('calendario_html', contenido)
+        self.logger.info("💾 Calendario guardado en caché (válido por 6 horas)")
         
         # Guardar para debug si estamos en desarrollo
         if settings.is_development():
             debug_file = 'debug_calendario.html'
             with open(debug_file, 'w', encoding='utf-8') as f:
-                f.write(response.text)
+                f.write(contenido)
             self.logger.debug(f"HTML guardado en {debug_file}")
         
-        return response.text
+        return contenido
     
     def extraer_eventos(self, contenido: str) -> List[Evento]:
         """
