@@ -2,6 +2,7 @@
 """
 🤖 Motor conversacional del Calendario Académico UNViMe
 Usa Gemini para responder preguntas sobre eventos
+Incluye soporte MCP (Model Context Protocol)
 """
 
 from typing import List, Optional
@@ -16,12 +17,22 @@ class CalendarioChatbot:
     """
     Chatbot conversacional que responde preguntas sobre el calendario académico.
     Combina datos reales del scraper con inteligencia artificial.
+    Incluye integración con MCP Server para herramientas avanzadas.
     """
     
     def __init__(self):
         self.logger = setup_logger("CalendarioChatbot")
         self.llm = get_llm_client()
         self.calendario_service = CalendarioService()
+        
+        # ✅ NUEVO: Integrar MCP Server
+        try:
+            from src.mcp.server import get_mcp_server
+            self.mcp_server = get_mcp_server()
+            self.logger.info("✅ Chatbot con soporte MCP inicializado")
+        except ImportError:
+            self.mcp_server = None
+            self.logger.warning("⚠️ MCP Server no disponible (módulo no encontrado)")
         
         # Contexto base del asistente
         self.system_context = """
@@ -287,3 +298,66 @@ INSTRUCCIONES:
         except Exception as e:
             self.logger.error(f"Error obteniendo eventos del día: {e}", exc_info=True)
             return []
+    
+    # ============================================================================
+    # ✅ MÉTODOS MCP (Model Context Protocol)
+    # ============================================================================
+    
+    async def ejecutar_herramienta_mcp(self, nombre: str, argumentos: dict = None):
+        """
+        Ejecuta una herramienta MCP desde el chatbot.
+        
+        Args:
+            nombre: Nombre de la herramienta MCP
+            argumentos: Argumentos de la herramienta
+            
+        Returns:
+            Resultado de la herramienta en formato dict
+        """
+        if self.mcp_server is None:
+            self.logger.error("MCP Server no está disponible")
+            return {"error": "MCP Server no disponible"}
+        
+        try:
+            response = await self.mcp_server.call_tool(nombre, argumentos)
+            
+            if response.isError:
+                self.logger.error(f"Error en herramienta MCP: {response.content}")
+                return {"error": response.content[0]["text"]}
+            
+            # Parsear respuesta JSON
+            import json
+            result_text = response.content[0]["text"]
+            return json.loads(result_text)
+            
+        except Exception as e:
+            self.logger.error(f"Error ejecutando herramienta MCP: {e}", exc_info=True)
+            return {"error": str(e)}
+    
+    def listar_herramientas_mcp(self):
+        """
+        Lista todas las herramientas MCP disponibles.
+        
+        Returns:
+            Lista de herramientas con nombre, descripción y schema
+        """
+        if self.mcp_server is None:
+            return []
+        
+        return self.mcp_server.list_tools()
+    
+    def obtener_info_mcp(self):
+        """
+        Obtiene información del servidor MCP.
+        
+        Returns:
+            Diccionario con info del servidor MCP
+        """
+        if self.mcp_server is None:
+            return {"disponible": False, "mensaje": "MCP Server no inicializado"}
+        
+        return {
+            "disponible": True,
+            "servidor": self.mcp_server.to_dict(),
+            "herramientas": len(self.listar_herramientas_mcp())
+        }

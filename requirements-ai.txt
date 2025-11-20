@@ -19,3 +19,6 @@ twilio==9.0.0
 
 # Async utilities
 aiohttp==3.13.2
+
+# Model Context Protocol
+mcp==1.0.0
