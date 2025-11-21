@@ -1,4 +1,5 @@
 # docker-compose.yml
+version: '3.8'
 
 services:
   # Discord Bot
@@ -21,7 +22,7 @@ services:
       - ./cache:/app/cache
     networks:
       - pregon-network
-    command: ["python", "-c", "from src.integrations.discord_bot import run_discord_bot; run_discord_bot()"]
+    command: ["python", "entrypoints/discord_service.py"]
     healthcheck:
       test: ["CMD", "python", "-c", "print('OK')"]
       interval: 30s
@@ -40,6 +41,7 @@ services:
       - "5000:5000"
     environment:
       - ENVIRONMENT=production
+      - PORT=5000
       - TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID}
       - TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN}
       - TWILIO_WHATSAPP_FROM=${TWILIO_WHATSAPP_FROM}
@@ -52,37 +54,13 @@ services:
       - ./cache:/app/cache
     networks:
       - pregon-network
-    command: ["python", "-c", "from src.integrations.whatsapp_webhook import app; app.run(host='0.0.0.0', port=5000)"]
+    command: ["python", "entrypoints/whatsapp_service.py"]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 10s
-
-  # ⚠️ SCHEDULER DESHABILITADO (causaba spam)
-  # Descomentar solo si necesitas notificaciones automáticas programadas
-  # scheduler:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   container_name: pregon-scheduler
-  #   restart: unless-stopped
-  #   environment:
-  #     - ENVIRONMENT=production
-  #     - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
-  #     - TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID}
-  #     - TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN}
-  #     - GEMINI_API_KEY=${GEMINI_API_KEY}
-  #     - CALENDAR_URL=${CALENDAR_URL}
-  #     - LOG_LEVEL=INFO
-  #   volumes:
-  #     - ./logs:/app/logs
-  #     - ./cache:/app/cache
-  #   networks:
-  #     - pregon-network
-  #   # TODO: Implementar scheduler correctamente con cron/schedule
-  #   command: ["python", "-c", "import time; time.sleep(86400)"]
 
 networks:
   pregon-network:
