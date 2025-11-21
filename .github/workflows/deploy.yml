@@ -14,14 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     
-    strategy:
-      matrix:
-        service:
-          - name: Discord Bot
-            id: ${{ secrets.RAILWAY_SERVICE_DISCORD }}
-          - name: WhatsApp Bot
-            id: ${{ secrets.RAILWAY_SERVICE_WHATSAPP }}
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,11 +26,18 @@ jobs:
       - name: Install Railway CLI
         run: npm install -g @railway/cli
       
-      - name: Deploy ${{ matrix.service.name }}
-        run: railway up --service=${{ matrix.service.id }}
+      - name: Deploy Discord Service
+        run: railway up --service=${{ secrets.RAILWAY_SERVICE_DISCORD }}
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      
+      - name: Deploy WhatsApp Service
+        run: railway up --service=${{ secrets.RAILWAY_SERVICE_WHATSAPP }}
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
       
       - name: Deployment Summary
         run: |
-          echo "✅ ${{ matrix.service.name }} deployed successfully" >> $GITHUB_STEP_SUMMARY
+          echo "## 🚀 Deployment Successful" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Discord Bot deployed to Railway" >> $GITHUB_STEP_SUMMARY
+          echo "✅ WhatsApp Bot deployed to Railway" >> $GITHUB_STEP_SUMMARY
