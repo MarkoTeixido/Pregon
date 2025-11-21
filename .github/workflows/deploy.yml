@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Deploy to Railway
+  deploy-discord:
+    name: Deploy Discord Bot
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     
@@ -18,30 +18,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Deploy to Railway
+        uses: railwayapp/railway-deploy@v1
         with:
-          node-version: '20'
+          railway_token: ${{ secrets.RAILWAY_TOKEN }}
+          service_id: ${{ secrets.RAILWAY_SERVICE_DISCORD }}
+
+  deploy-whatsapp:
+    name: Deploy WhatsApp Bot
+    runs-on: ubuntu-latest
+    needs: deploy-discord
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
-      
-      - name: Deploy Discord Service
-        run: |
-          railway link ${{ secrets.RAILWAY_PROJECT_ID }}
-          railway up --service ${{ secrets.RAILWAY_SERVICE_DISCORD }}
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      
-      - name: Deploy WhatsApp Service
-        run: |
-          railway link ${{ secrets.RAILWAY_PROJECT_ID }}
-          railway up --service ${{ secrets.RAILWAY_SERVICE_WHATSAPP }}
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      
-      - name: Deployment Summary
-        run: |
-          echo "## 🚀 Deployment Successful" >> $GITHUB_STEP_SUMMARY
-          echo "✅ Discord Bot deployed to Railway" >> $GITHUB_STEP_SUMMARY
-          echo "✅ WhatsApp Bot deployed to Railway" >> $GITHUB_STEP_SUMMARY
+      - name: Deploy to Railway
+        uses: railwayapp/railway-deploy@v1
+        with:
+          railway_token: ${{ secrets.RAILWAY_TOKEN }}
+          service_id: ${{ secrets.RAILWAY_SERVICE_WHATSAPP }}
