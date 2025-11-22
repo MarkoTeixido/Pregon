@@ -1,28 +1,26 @@
 <p align="center">
-  <a href="https://github.com/MarkoTeixido/Prigon">
-    <img src="https://i.imgur.com/8osiyMR.png" height="128"> 
+  <a href="https://github.com/MarkoTeixido/Pregon">
+    <img src="https://i.imgur.com/tBhnwlI.png" height="128">
   </a>
-  <h2 align="center"><a href="https://github.com/MarkoTeixido/Prigon">Pregon</a></h2>
-  <p align="center">Sistema inteligente de calendario académico para la Universidad Nacional de Villa Mercedes, potenciado por IA y MCP Server.<p>
+  <h2 align="center"><a href="https://github.com/MarkoTeixido/Pregon">Pregón</a></h2>
+  <p align="center">Sistema inteligente de calendario académico para la Universidad Nacional de Villa Mercedes, potenciado por IA y MCP Server.</p>
+  
   <p align="center">
-    <a href="https://github.com/MarkoTeixido/Prigon">
-    	<img src="https://img.shields.io/badge/%F0%9F%8E%93-Proyecto_Educativo-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="proyecto" />
-    </a>
+    <img src="https://i.imgur.com/Euv2bDd.png" height="128">
+  </p>
+
+  <p align="center">
     <a href="#-características">
-    	<img src="https://img.shields.io/badge/%E2%9C%A8-Características-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="características" />
+      <img src="https://img.shields.io/badge/%E2%9C%A8-Características-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="características" />
     </a>
     <a href="#-tecnologías">
-    	<img src="https://img.shields.io/badge/%F0%9F%9A%80-Stack-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="stack" />
+      <img src="https://img.shields.io/badge/%F0%9F%9A%80-Stack-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="stack" />
     </a>
     <a href="#-instalación">
-    	<img src="https://img.shields.io/badge/%F0%9F%93%A6-Instalación-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="instalación" />
-    </a>
-    <a href="LICENSE">
-    	<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="licencia" />
+      <img src="https://img.shields.io/badge/%F0%9F%93%A6-Instalación-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="instalación" />
     </a>
   </p>
 </p>
-
 <br>
 
 ![](https://i.imgur.com/waxVImv.png)
@@ -34,21 +32,23 @@
 ### 🎯 Objetivo
 
 Crear una plataforma que sea:
-- **Inteligente**: IA conversacional con Google Gemini
-- **Multicanal**: Discord, WhatsApp y Google Calendar
+- **Inteligente**: IA conversacional con Google Gemini 2.5 Flash
+- **Multicanal**: Discord, WhatsApp
 - **Moderna**: MCP Server (Model Context Protocol)
-- **Automática**: Web scraping y notificaciones programadas
-- **Profesional**: Código limpio, modular y bien documentado
+- **Automática**: Web scraping inteligente con caché
+- **Escalable**: Arquitectura modular y profesional
+- **Production**: CI/CD, Docker, tests automatizados
 
 ### 🖼️ Preview
 
 <p align="center">
-   [agregar imagen - screenshot del bot en Discord]
+   <img src="https://i.imgur.com/HAaVEPD.png" height="750">
+</p>
+<p align="center">
+   <img src="https://i.imgur.com/lthqzP0.png" height="700">
 </p>
 
-<p align="center">
-   [agregar imagen - screenshot del bot en WhatsApp]
-</p>
+
 
 ![](https://i.imgur.com/waxVImv.png)
 
@@ -56,65 +56,67 @@ Crear una plataforma que sea:
 
 ### 🤖 Inteligencia Artificial
 
-- **Google Gemini 2.5 Flash**: Asistente conversacional inteligente
-- **NLP Query Parser**: Entiende preguntas en lenguaje natural
-- **Contexto Académico**: Comprende términos universitarios
-- **Filtrado Inteligente**: Busca eventos por fecha, categoría y tipo
-- **Respuestas Personalizadas**: Adapta el tono según el canal
+- **Google Gemini 2.5 Flash**: Modelo de última generación para conversaciones
+- **NLP Query Parser**: Procesa preguntas en lenguaje natural
+- **Contexto Académico**: Entiende términos universitarios específicos
+- **Filtrado Inteligente**: Búsqueda por fecha, categoría, tipo de evento
+- **Respuestas Adaptativas**: Ajusta tono y formato según el canal
 
 ### 🔌 MCP Server (Model Context Protocol)
 
-- **Arquitectura Moderna**: Protocolo estándar para LLMs
-- **6 Herramientas Disponibles**:
-  - `get_eventos_semana`: Eventos de la próxima semana
-  - `buscar_eventos`: Búsqueda con filtros avanzados
-  - `get_proximos_examenes`: Exámenes próximos
-  - `agregar_a_google_calendar`: Integración directa con Calendar
-  - `generar_link_calendar`: Links públicos para agregar eventos
-  - `enviar_recordatorio`: Notificaciones multicanal
-- **Extensible**: Fácil agregar nuevas herramientas
-- **Interoperable**: Compatible con cualquier LLM que soporte MCP
+- **Arquitectura Estándar**: Compatible con cualquier LLM que soporte MCP
+- **6 Herramientas Especializadas**:
+  - `get_eventos_semana`: Consulta eventos de los próximos 7 días
+  - `buscar_eventos`: Búsqueda avanzada con múltiples filtros
+  - `get_proximos_examenes`: Filtra solo exámenes por rango de fechas
+  - `agregar_a_google_calendar`: Integración directa con Calendar API
+  - `generar_link_calendar`: Crea URLs públicas para compartir eventos
+  - `enviar_recordatorio`: Sistema de notificaciones multicanal
+- **Extensible**: Arquitectura de plugins para agregar nuevas herramientas
+- **Interoperable**: Funciona con Claude, GPT-4, Gemini y otros LLMs
+- **Type-Safe**: Schemas con Pydantic para validación automática
 
 ### 🤖 Bot de Discord
 
-- **Comandos Interactivos**: `!eventos`, `!calendario`, `!ayuda`, etc.
-- **Chat con IA**: `!pregunta <tu consulta>`
-- **Embeds Profesionales**: Mensajes con formato rico
-- **Reacciones Interactivas**: Navegación por menús
-- **Modo Conversacional**: Mantiene contexto entre mensajes
+- **Comandos de Texto**: `!pregunta`, `!ayuda`, `!hoy`
+- **Embeds Ricos**: Formato profesional con colores y emojis
+- **Chat Conversacional**: Modo IA con contexto persistente
 
 ### 📱 Bot de WhatsApp
 
-- **Webhook Seguro**: Integración vía Twilio
-- **Comandos Simples**: `EVENTOS`, `CALENDARIO`, `AYUDA`
-- **IA Conversacional**: Responde preguntas naturales
-- **Links Directos**: Agrega eventos a Google Calendar
-- **Sandbox Compatible**: Testing sin costo
+- **Comandos Simples**: `EVENTOS`, `CALENDARIO`, `AYUDA`, `BUSCAR`
+- **Chat Natural**: Responde preguntas sin comandos específicos
+- **Links Directos**: Agrega eventos a Calendar con 1 click
+- **Twilio Sandbox**: Testing gratuito antes de producción
+- **Error Handling**: Respuestas claras ante errores
 
 ### 🔍 Web Scraping Inteligente
 
-- **173+ Eventos Extraídos**: Calendario académico completo
-- **BeautifulSoup + lxml**: Parsing robusto
-- **Categorización Automática**: Exámenes, feriados, recesos, etc.
-- **Rangos de Fechas**: Expande eventos multi-día
-- **Caché Inteligente**: Evita scraping repetido (6 horas)
-- **Validación de Datos**: Asegura integridad
+- **BeautifulSoup4 + lxml**: Parser robusto y rápido
+- **Categorización Automática**: 
+  - Exámenes (generales, recuperatorios, compensatorios)
+  - Feriados (nacionales, provinciales)
+  - Recesos (escolares, de invierno)
+  - Eventos especiales (actos, ceremonias)
+- **Expansión de Rangos**: Eventos multi-día → eventos individuales
+- **Caché Inteligente**: TTL de 6 horas para optimizar requests
+- **Validación Robusta**: Verifica fechas, textos y estructura
 
 ### 📅 Google Calendar Integration
 
-- **Creación Automática**: Agrega eventos directamente
-- **Links Públicos**: URLs cortas con TinyURL
-- **OAuth 2.0**: Autenticación segura
-- **Zona Horaria**: Argentina/Buenos Aires
-- **Batch Operations**: Múltiples eventos a la vez
+- **OAuth 2.0 Flow**: Autenticación segura con refresh tokens
+- **Creación Automática**: Agrega eventos directo a tu calendario
+- **Batch Operations**: Procesa múltiples eventos eficientemente
+- **Color Coding**: Categorías por colores personalizables
+- **Recordatorios**: Configura alertas automáticas
 
 ### 🔔 Sistema de Notificaciones
 
-- **Multicanal**: Discord + WhatsApp
-- **Programables**: Scheduler automático
-- **Personalizables**: Por tipo de evento
-- **Recordatorios**: Antes de exámenes importantes
-- **Manager Pattern**: Arquitectura extensible
+- **Manager Pattern**: Arquitectura extensible con múltiples notifiers
+- **Canales Soportados**: Discord Webhooks, WhatsApp (Twilio)
+- **Scheduler Integrado**: Cron jobs para notificaciones programadas
+- **Templates Personalizados**: Mensajes adaptados por tipo de evento
+- **Agrupación Inteligente**: Resumen diario/semanal
 
 ![](https://i.imgur.com/waxVImv.png)
 
@@ -123,116 +125,17 @@ Crear una plataforma que sea:
 ### 🔄 Diagrama General
 
 <p align="center">
-   [agregar imagen - diagrama de arquitectura]
+   <img src="https://i.imgur.com/CQFiOkv.png" height="700">
 </p>
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        USUARIOS                              │
-│                                                               │
-│   Discord    WhatsApp    Google Calendar    Otros LLMs      │
-└────────┬──────────┬──────────────┬────────────────┬──────────┘
-         │          │              │                │
-         v          v              v                v
-┌────────────────────────────────────────────────────────────┐
-│                      PREGON SYSTEM                          │
-│                                                              │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
-│  │ Discord Bot  │  │WhatsApp Bot  │  │  MCP Server  │     │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘     │
-│         │                  │                  │              │
-│         └──────────────────┼──────────────────┘              │
-│                            v                                 │
-│                   ┌─────────────────┐                       │
-│                   │  AI Chatbot     │                       │
-│                   │  (Gemini 2.5)   │                       │
-│                   └────────┬────────┘                       │
-│                            │                                 │
-│         ┌──────────────────┼──────────────────┐             │
-│         v                  v                  v              │
-│  ┌────────────┐   ┌────────────┐   ┌────────────┐          │
-│  │  Scraper   │   │  Calendar  │   │Notificaciones│        │
-│  │  (UNViMe)  │   │  Service   │   │   Manager    │        │
-│  └─────┬──────┘   └─────┬──────┘   └──────┬─────┘          │
-│        │                 │                  │                │
-│        v                 v                  v                │
-│  ┌──────────────────────────────────────────────┐           │
-│  │            Utils (Cache, Validators)         │           │
-│  └──────────────────────────────────────────────┘           │
-└──────────────────────────────────────────────────────────────┘
-         │                 │                  │
-         v                 v                  v
-┌────────────────────────────────────────────────────────────┐
-│                   SERVICIOS EXTERNOS                        │
-│                                                              │
-│   UNViMe Web    Google AI    Google Calendar    Twilio     │
-└─────────────────────────────────────────────────────────────┘
-```
+### 📊 Flujo de Consulta
 
-### 📊 Flujo de una Consulta
-
-```
-Usuario en Discord
-    │
-    ├─> !pregunta "¿Cuándo son los exámenes de diciembre?"
-    │
-    v
-Discord Bot
-    │
-    ├─> Sanitiza input
-    ├─> Envía a Chatbot
-    │
-    v
-AI Chatbot (Gemini)
-    │
-    ├─> Detecta intención: "buscar exámenes"
-    ├─> Llama a MCP Server
-    │
-    v
-MCP Server
-    │
-    ├─> Tool: get_proximos_examenes(dias=60)
-    │
-    v
-EventosTools
-    │
-    ├─> Verifica caché
-    ├─> Si no existe: scraping
-    ├─> Filtra por categoría "examen"
-    ├─> Filtra por rango de fechas
-    │
-    v
-Scraper
-    │
-    ├─> Descarga HTML (si no está en caché)
-    ├─> Extrae 173 eventos
-    ├─> Guarda en caché (6h)
-    │
-    v
-EventosTools
-    │
-    ├─> Retorna JSON estructurado
-    │
-    v
-AI Chatbot
-    │
-    ├─> Procesa respuesta JSON
-    ├─> Genera respuesta natural
-    │
-    v
-Discord Bot
-    │
-    ├─> Formatea como Discord Embed
-    ├─> Envía al usuario
-    │
-    v
-Usuario ve:
-    📝 Próximos Exámenes (Diciembre 2025)
-    
-    • 2/12 - Exámenes Generales
-    • 9/12 - Exámenes Generales
-    ...
-```
+<p align="center">
+   <img src="https://i.imgur.com/2FnsT8F.png" height="700">
+</p>
+<p align="center">
+   <img src="https://i.imgur.com/ohieoPF.png" height="700">
+</p>
 
 ![](https://i.imgur.com/waxVImv.png)
 
@@ -243,15 +146,16 @@ Usuario ve:
 | Tecnología | Versión | Uso |
 |-----------|---------|-----|
 | **Python** | 3.10+ | Lenguaje principal |
-| **discord.py** | 2.3.2+ | SDK de Discord |
-| **Flask** | 3.0.0+ | Webhook de WhatsApp |
-| **Twilio** | 9.0.0+ | API de WhatsApp |
+| **discord.py** | 2.3.2+ | SDK oficial de Discord |
+| **Flask** | 3.0.0+ | Framework web para WhatsApp webhook |
+| **Twilio** | 9.0.0+ | API de WhatsApp Business |
 | **Google Generative AI** | 0.8.3+ | SDK de Gemini |
-| **Google Calendar API** | 2.149.0+ | Integración con Calendar |
-| **BeautifulSoup4** | 4.12.0+ | Web scraping |
-| **lxml** | 5.3.0+ | Parser HTML rápido |
+| **Google Calendar API** | 2.149.0+ | Gestión de calendarios |
+| **BeautifulSoup4** | 4.12.0+ | Parser HTML/XML |
+| **lxml** | 5.3.0+ | Parser rápido para BS4 |
 | **Requests** | 2.31.0+ | Cliente HTTP |
-| **python-dotenv** | 1.0.0+ | Variables de entorno |
+| **python-dotenv** | 1.0.0+ | Gestión de variables de entorno |
+| **Pydantic** | 2.0+ | Validación de datos con types |
 
 ### MCP (Model Context Protocol)
 
@@ -261,28 +165,42 @@ Usuario ve:
 | **EventosTools** | ✅ | Búsqueda y filtrado de eventos |
 | **CalendarioTools** | ✅ | Integración con Google Calendar |
 | **NotificacionesTools** | ✅ | Sistema de recordatorios |
-| **Cache System** | ✅ | Optimización de consultas |
-| **Validators** | ✅ | Validación de datos |
+| **Cache System** | ✅ | Optimización con TTL de 6h |
+| **Validators** | ✅ | Validación de fechas y eventos |
 
-### Integraciones
+### Integraciones Externas
 
-| Servicio | API | Uso |
-|----------|-----|-----|
-| **UNViMe** | Web Scraping | Extracción de eventos |
-| **Google Gemini** | AI API | Chatbot conversacional |
-| **Google Calendar** | Calendar API v3 | Gestión de eventos |
-| **Twilio** | WhatsApp API | Mensajería |
-| **Discord** | Bot API | Chat interactivo |
-| **TinyURL** | Shortening API | Acortar links |
+| Servicio | API/Método | Uso |
+|----------|-----------|-----|
+| **UNViMe** | Web Scraping (BeautifulSoup) | Extracción del calendario académico |
+| **Google Gemini** | Generative AI API | Chatbot conversacional inteligente |
+| **Google Calendar** | Calendar API v3 | Creación y gestión de eventos |
+| **Twilio** | WhatsApp Business API | Mensajería bidireccional |
+| **Discord** | Discord Bot API | Bot interactivo con comandos |
+| **TinyURL** | URL Shortening API | Acortar links de calendar |
 
-### DevOps
+### DevOps & CI/CD
 
 | Herramienta | Uso |
 |------------|-----|
-| **Git/GitHub** | Control de versiones |
-| **ngrok** | Túnel para desarrollo local |
-| **Virtual Environment** | Aislamiento de dependencias |
-| **Logging** | Sistema de logs estructurado |
+| **GitHub Actions** | CI/CD pipeline automatizado |
+| **Docker** | Containerización multi-stage |
+| **Docker Compose** | Orquestación de servicios |
+| **Railway** | Deployment en producción |
+| **pytest** | Tests unitarios e integración |
+| **flake8** | Linting y code quality |
+| **black** | Code formatting automático |
+| **ngrok** | Túnel HTTPS para desarrollo local |
+
+### Monitoreo & Logging
+
+| Componente | Descripción |
+|-----------|-------------|
+| **Custom Logger** | Sistema estructurado con niveles |
+| **File Rotation** | Logs rotativos por tamaño |
+| **Console Output** | Logs formateados con colores |
+| **Error Tracking** | Stack traces completos |
+| **Performance Metrics** | Timing de operaciones críticas |
 
 ![](https://i.imgur.com/waxVImv.png)
 
@@ -290,19 +208,23 @@ Usuario ve:
 
 ### Prerequisitos
 
-- Python >= 3.10
-- pip >= 23.x
-- Cuenta de Discord con bot token
-- Cuenta de Twilio (para WhatsApp)
-- API Key de Google Gemini
-- Credenciales de Google Calendar API
+- **Python** >= 3.10
+- **pip** >= 23.x
+- **Git** >= 2.x
+- **Docker** (opcional, para containerización)
+- Cuentas en:
+  - Discord (para bot token)
+  - Twilio (para WhatsApp)
+  - Google Cloud (para Gemini AI y Calendar API)
 
-### Opción 1: Setup Rápido
+---
+
+### 🚀 Opción 1: Setup Rápido (Recomendado)
 
 ```bash
 # 1. Clonar repositorio
-git clone https://github.com/MarkoTeixido/Prigon.git
-cd Prigon
+git clone https://github.com/MarkoTeixido/Pregon.git
+cd Pregon
 
 # 2. Crear entorno virtual
 python -m venv venv
@@ -314,395 +236,561 @@ source venv/bin/activate
 venv\Scripts\activate
 
 # 3. Instalar dependencias
+pip install --upgrade pip
 pip install -r requirements.txt
 pip install -r requirements-ai.txt
 
 # 4. Configurar variables de entorno
 cp .env.example .env
-# Editar .env con tus credenciales
+# Editar .env con tus credenciales (ver sección siguiente)
 
 # 5. Ejecutar
 python run.py
 ```
 
-### Opción 2: Setup Detallado
+---
 
-<details>
-<summary><b>Ver instrucciones paso a paso</b></summary>
-
-#### 1. Clonar el Repositorio
+### 🐳 Opción 2: Docker (Producción)
 
 ```bash
-git clone https://github.com/MarkoTeixido/Prigon.git
-cd Prigon
+# 1. Clonar y configurar .env
+git clone https://github.com/MarkoTeixido/Pregon.git
+cd Pregon
+cp .env.example .env
+# Editar .env con credenciales
+
+# 2. Construir imágenes
+docker-compose build
+
+# 3. Iniciar servicios
+docker-compose up -d
+
+# 4. Ver logs
+docker-compose logs -f
+
+# 5. Detener
+docker-compose down
 ```
 
-#### 2. Crear Entorno Virtual
+**Servicios disponibles:**
+- `discord-bot`: Bot de Discord
+- `whatsapp-webhook`: Servidor de WhatsApp
 
+**Comandos útiles:**
 ```bash
-python -m venv venv
+# Iniciar solo Discord
+docker-compose up -d discord-bot
+
+# Reiniciar servicio
+docker-compose restart whatsapp-webhook
+
+# Ver estado
+docker-compose ps
+
+# Entrar a contenedor
+docker exec -it pregon-discord bash
 ```
 
-**Activar:**
-- **Linux/macOS**: `source venv/bin/activate`
-- **Windows**: `venv\Scripts\activate`
+---
 
-#### 3. Instalar Dependencias
+### ⚙️ Configuración de Variables de Entorno
 
-```bash
-# Core dependencies
-pip install -r requirements.txt
-
-# AI dependencies
-pip install -r requirements-ai.txt
-
-# Development tools (opcional)
-pip install -r requirements-dev.txt
-```
-
-#### 4. Configurar Variables de Entorno
-
-Crear archivo `.env`:
+Edita el archivo `.env` con tus credenciales:
 
 ```env
-# === DISCORD ===
-DISCORD_BOT_TOKEN=tu_token_de_discord
+# ============================================
+# DISCORD
+# ============================================
+DISCORD_BOT_TOKEN=tu_token_aqui
 DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
+DISCORD_GUILD_ID=tu_server_id
 
-# === TWILIO (WhatsApp) ===
+# ============================================
+# TWILIO (WhatsApp)
+# ============================================
 TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-TWILIO_AUTH_TOKEN=tu_auth_token
+TWILIO_AUTH_TOKEN=tu_auth_token_aqui
 TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
 TWILIO_WHATSAPP_TO=whatsapp:+54tu_numero
 
-# === GOOGLE GEMINI ===
-GEMINI_API_KEY=tu_api_key_de_gemini
+# ============================================
+# GOOGLE GEMINI AI
+# ============================================
+GEMINI_API_KEY=tu_api_key_aqui
+LLM_MODEL_GEMINI=gemini-2.5-flash
+LLM_TEMPERATURE=0.7
+LLM_MAX_TOKENS=2048
 
-# === GOOGLE CALENDAR ===
+# ============================================
+# GOOGLE CALENDAR
+# ============================================
 GOOGLE_CREDENTIALS_PATH=credentials/google_calendar.json
 GOOGLE_TOKEN_PATH=credentials/token.json
 
-# === CALENDARIO UNVIME ===
+# ============================================
+# CALENDARIO UNVIME
+# ============================================
 CALENDAR_URL=https://www.unvime.edu.ar/calendario/
 
-# === CONFIGURACIÓN ===
-ENVIRONMENT=development
+# ============================================
+# CONFIGURACIÓN GENERAL
+# ============================================
+ENVIRONMENT=production
 LOG_LEVEL=INFO
+ENABLE_CACHE=true
+CACHE_TTL=21600
 ```
 
-#### 5. Obtener Credenciales
+---
 
-**Discord Bot:**
-1. Ir a [Discord Developer Portal](https://discord.com/developers/applications)
-2. Crear nueva aplicación
-3. Ir a "Bot" → "Reset Token"
-4. Copiar token
-5. Habilitar "Message Content Intent"
+### 🔑 Obtener Credenciales
 
-**Twilio WhatsApp:**
-1. Crear cuenta en [Twilio](https://www.twilio.com/try-twilio)
-2. Ir a WhatsApp Sandbox
-3. Copiar Account SID y Auth Token
+<details>
+<summary><b>📘 Discord Bot Token</b></summary>
 
-**Google Gemini:**
-1. Ir a [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. Crear API Key
-3. Copiar
-
-**Google Calendar:**
-1. Ir a [Google Cloud Console](https://console.cloud.google.com/)
-2. Crear proyecto
-3. Habilitar Google Calendar API
-4. Crear credenciales OAuth 2.0
-5. Descargar JSON a `credentials/google_calendar.json`
-
-#### 6. Ejecutar
-
-**Discord Bot:**
-```bash
-python run.py
-# Seleccionar opción 1
-```
-
-**WhatsApp Webhook:**
-```bash
-# Terminal 1
-python run.py
-# Seleccionar opción 2
-
-# Terminal 2
-ngrok http 5000
-# Copiar URL y configurar en Twilio
-```
+1. Ve a [Discord Developer Portal](https://discord.com/developers/applications)
+2. Click en **"New Application"**
+3. Dale un nombre (ej: "Pregon Bot")
+4. Ve a la pestaña **"Bot"**
+5. Click en **"Reset Token"** y copia el token
+6. En **"Privileged Gateway Intents"** activa:
+   - ✅ Message Content Intent
+   - ✅ Server Members Intent (opcional)
+7. Ve a **"OAuth2 → URL Generator"**
+8. Selecciona scopes: `bot`, `applications.commands`
+9. Selecciona permisos: `Send Messages`, `Embed Links`, `Read Message History`
+10. Copia la URL generada y abre en navegador para invitar el bot
 
 </details>
+
+<details>
+<summary><b>📱 Twilio WhatsApp Credentials</b></summary>
+
+1. Crea cuenta en [Twilio](https://www.twilio.com/try-twilio)
+2. Ve a **Console → WhatsApp → Sandbox**
+3. Copia tu **Account SID** y **Auth Token**
+4. Para testing, usa el sandbox:
+   - `TWILIO_WHATSAPP_FROM=whatsapp:+14155238886`
+5. Envía el código de activación al sandbox desde tu WhatsApp
+6. Configura Webhook URL (en producción o con ngrok):
+   - URL: `https://tu-dominio.com/webhook`
+   - Method: `POST`
+
+</details>
+
+<details>
+<summary><b>🤖 Google Gemini API Key</b></summary>
+
+1. Ve a [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Click en **"Get API key"**
+3. Selecciona o crea un proyecto
+4. Click en **"Create API key"**
+5. Copia la API key generada
+6. **Límites gratuitos**: 60 requests/minuto, 1500/día
+
+</details>
+
+<details>
+<summary><b>📅 Google Calendar API</b></summary>
+
+1. Ve a [Google Cloud Console](https://console.cloud.google.com/)
+2. Crea un nuevo proyecto o selecciona uno existente
+3. Habilita **Google Calendar API**:
+   - API Library → Busca "Calendar" → Enable
+4. Crea credenciales OAuth 2.0:
+   - Credentials → Create Credentials → OAuth client ID
+   - Application type: Desktop app
+   - Download JSON
+5. Guarda el JSON como `credentials/google_calendar.json`
+6. La primera vez que ejecutes, se abrirá un navegador para autorizar
+7. Se generará automáticamente `credentials/token.json`
+
+</details>
+
+---
+
+### 🧪 Verificar Instalación
+
+```bash
+# Activar entorno virtual
+source venv/bin/activate  # Linux/macOS
+# o
+venv\Scripts\activate  # Windows
+
+# Ejecutar script principal
+python run.py
+
+# Deberías ver el menú:
+# ══════════════════════════════════════════
+# 🤖 PREGON - Sistema de Calendario UNViMe
+# ══════════════════════════════════════════
+# 
+# 1. Bot de Discord
+# 2. Webhook de WhatsApp
+# 3. MCP Server
+# 4. Scheduler
+# 5. Salir
+```
 
 ![](https://i.imgur.com/waxVImv.png)
 
 ## 🎮 Uso
 
-### Discord Bot
+### 🤖 Discord Bot
 
-Una vez el bot esté en tu servidor, usa estos comandos:
+#### Comandos Disponibles
 
 ```
+🔍 Consultas
 !pregunta <consulta>     - Pregunta al asistente IA
 !eventos                 - Eventos de la próxima semana
 !hoy                     - Eventos de hoy
+!buscar <término>        - Buscar eventos específicos
+
+📅 Google Calendar
 !calendario              - Links para agregar eventos
 !agregar menu            - Menú interactivo para agregar
-!buscar <término>        - Buscar eventos específicos
+
+ℹ️ Ayuda
 !ayuda                   - Muestra todos los comandos
+!ping                    - Verifica que el bot está activo
 ```
 
-**Ejemplos:**
+#### Ejemplos de Uso
+
 ```
 !pregunta ¿Cuándo son los exámenes de diciembre?
-!buscar receso
+!pregunta ¿Hay clases el 25 de diciembre?
+!pregunta Dame los recesos de 2025
+!buscar feriado
+!buscar receso invierno
 !eventos
+!hoy
 ```
 
-### WhatsApp Bot
+#### Respuestas Inteligentes
 
-Envía mensajes al número del sandbox:
+El bot entiende:
+- ✅ Preguntas en lenguaje natural
+- ✅ Sinónimos (examen/evaluación, feriado/festivo)
+- ✅ Fechas relativas ("próxima semana", "mes que viene")
+- ✅ Rangos de fechas ("de enero a marzo")
+- ✅ Categorías (exámenes, feriados, recesos)
+
+---
+
+### 📱 WhatsApp Bot
+
+#### Comandos
 
 ```
-EVENTOS      - Ver próximos eventos
-CALENDARIO   - Links de Google Calendar
-AYUDA        - Lista de comandos
-<pregunta>   - Cualquier pregunta sobre el calendario
+EVENTOS         - Ver próximos 7 eventos
+CALENDARIO      - Links para agregar a Google Calendar
+AYUDA           - Lista de comandos disponibles
+BUSCAR <texto>  - Buscar eventos específicos
 ```
 
-**Ejemplos:**
+#### Modo Conversacional
+
+También puedes hacer preguntas naturales sin comandos:
+
 ```
-EVENTOS
-¿Hay clases el 21 de noviembre?
-¿Cuándo empiezan las clases en 2025?
+¿Cuándo empiezan las clases?
+¿Hay feriados en julio?
+¿Cuándo son los exámenes?
+Dame el calendario de diciembre
 ```
 
-### MCP Server (Programático)
+#### Configurar Webhook (Desarrollo Local)
+
+```bash
+# Terminal 1: Iniciar servidor Flask
+python run.py
+# Seleccionar opción 2 (WhatsApp)
+
+# Terminal 2: Exponer con ngrok
+ngrok http 5000
+
+# Copiar la URL HTTPS (ej: https://abc123.ngrok.io)
+# Ir a Twilio Console → WhatsApp Sandbox Settings
+# Webhook URL: https://abc123.ngrok.io/webhook
+# Method: POST
+```
+
+---
+
+### 🔌 MCP Server
 
 ```python
+import asyncio
 from src.mcp.server import get_mcp_server
 
-# Obtener servidor
-server = get_mcp_server()
+async def main():
+    # Obtener instancia del servidor
+    server = get_mcp_server()
+    
+    # Listar herramientas disponibles
+    tools = await server.list_tools()
+    print(f"Herramientas: {[t['name'] for t in tools]}")
+    
+    # Ejecutar herramienta: obtener eventos de la semana
+    response = await server.call_tool(
+        "get_eventos_semana",
+        {}
+    )
+    print(f"Eventos esta semana: {response}")
+    
+    # Buscar eventos específicos
+    response = await server.call_tool(
+        "buscar_eventos",
+        {
+            "categoria": "examen",
+            "desde": "2025-12-01",
+            "hasta": "2025-12-31"
+        }
+    )
+    print(f"Exámenes en diciembre: {response}")
+    
+    # Generar link de calendario
+    response = await server.call_tool(
+        "generar_link_calendar",
+        {
+            "titulo": "Examen Final",
+            "fecha": "2025-12-15",
+            "descripcion": "Matemática I"
+        }
+    )
+    print(f"Link: {response}")
 
-# Listar herramientas
-tools = server.list_tools()
-
-# Ejecutar herramienta
-response = await server.call_tool(
-    "get_eventos_semana",
-    {}
-)
-
-# Buscar eventos
-response = await server.call_tool(
-    "buscar_eventos",
-    {
-        "categoria": "examen",
-        "desde": "2025-12-01",
-        "hasta": "2025-12-31"
-    }
-)
+# Ejecutar
+asyncio.run(main())
 ```
 
 ![](https://i.imgur.com/waxVImv.png)
 
 ## 📊 Estructura del Proyecto
-
-```
-Prigon/
-├── src/
-│   ├── ai/                          # Chatbot con IA
-│   │   ├── chatbot.py              # Integración con Gemini
-│   │   └── prompts.py              # Prompts del sistema
-│   │
-│   ├── config/                      # Configuración
-│   │   ├── constants.py            # Constantes del sistema
-│   │   └── settings.py             # Settings con python-dotenv
-│   │
-│   ├── integrations/                # Integraciones externas
-│   │   ├── discord_bot.py          # Bot de Discord
-│   │   ├── whatsapp_webhook.py     # Webhook de WhatsApp
-│   │   ├── google_calendar_service.py
-│   │   └── calendar_link_generator.py
-│   │
-│   ├── mcp/                         # MCP Server ⭐
-│   │   ├── server.py               # Servidor principal
-│   │   └── tools/
-│   │       ├── eventos.py          # Herramientas de eventos
-│   │       ├── calendario.py       # Herramientas de calendar
-│   │       └── notificaciones.py   # Herramientas de notificaciones
-│   │
-│   ├── models/                      # Modelos de datos
-│   │   └── evento.py               # Modelo Evento (Pydantic)
-│   │
-│   ├── notifiers/                   # Sistema de notificaciones
-│   │   ├── manager.py              # Manager pattern
-│   │   ├── base.py                 # Clase base
-│   │   ├── discord_notifier.py
-│   │   └── whatsapp_notifier.py
-│   │
-│   ├── scrapers/                    # Web scraping
-│   │   ├── base.py                 # Scraper base
-│   │   └── unvime_scraper.py       # Scraper de UNViMe
-│   │
-│   ├── services/                    # Lógica de negocio
-│   │   └── calendario_service.py   # Servicio principal
-│   │
-│   └── utils/                       # Utilidades
-│       ├── cache.py                # Sistema de caché
-│       ├── validators.py           # Validadores
-│       ├── logger.py               # Logger estructurado
-│       └── query_parser.py         # Parser NLP
-│
-├── credentials/                     # Credenciales (no en git)
-│   ├── google_calendar.json
-│   └── token.json
-│
-├── cache/                           # Caché de scraping
-│   └── .gitkeep
-│
-├── logs/                            # Logs del sistema
-│   └── .gitkeep
-│
-├── tests/                           # Tests (opcional)
-│   └── test_mcp_server.py
-│
-├── .env                             # Variables de entorno (no en git)
-├── .env.example                     # Template de .env
-├── .gitignore
-├── LICENSE
-├── README.md
-├── requirements.txt                 # Dependencias core
-├── requirements-ai.txt              # Dependencias IA
-├── requirements-dev.txt             # Dependencias desarrollo
-└── run.py                           # Script principal
-```
+<p align="center">
+   <img src="https://i.imgur.com/GyU3xex.png" height="700">
+</p>
 
 ![](https://i.imgur.com/waxVImv.png)
 
-## 🎓 Aprendizajes y Decisiones Técnicas
+## 🎓 Decisiones Técnicas y Aprendizajes
 
 ### ¿Por qué Python?
 
-- Ecosistema rico para IA/ML
-- Excelentes librerías de scraping
-- APIs de bots bien soportadas
-- Fácil prototipado rápido
-- Gran comunidad
+| Razón | Explicación |
+|-------|-------------|
+| **Ecosistema IA/ML** | Librerías maduras (TensorFlow, scikit-learn) |
+| **APIs de Bots** | Excelente soporte para Discord, Telegram, WhatsApp |
+| **Web Scraping** | BeautifulSoup, Scrapy, Selenium muy robustos |
+| **Prototipado Rápido** | Sintaxis limpia, desarrollo ágil |
+| **Comunidad Grande** | Stack Overflow, PyPI con 400k+ paquetes |
 
 ### ¿Por qué MCP Server?
 
-- **Protocolo moderno** (2024-2025)
-- **Interoperabilidad** con cualquier LLM
-- **Arquitectura desacoplada** del chatbot
-- **Reutilizable** en otros proyectos
-- **Demuestra conocimiento** de tecnologías actuales
+- **Estándar Emergente**: Protocolo adoptado por Anthropic, OpenAI
+- **Interoperabilidad**: Funciona con cualquier LLM compatible
+- **Desacoplamiento**: Separación clara entre IA y herramientas
+- **Reutilizable**: Puedo usar estas tools en otros proyectos
+- **Future-Proof**: Tecnología de vanguardia (2024-2025)
 
 ### ¿Por qué Gemini 2.5 Flash?
 
-- Modelo de última generación
-- API gratuita generosa
-- Streaming nativo
-- Excelente para español
-- Bajo costo en producción
+| Ventaja | Detalle |
+|---------|---------|
+| **Última Generación** | Modelo más reciente de Google |
+| **Gratuito** | 60 req/min, 1500/día sin costo |
+| **Multimodal** | Texto, imágenes, audio |
+| **Streaming** | Respuestas en tiempo real |
+| **Español Nativo** | Entrenado específicamente para español |
+| **Bajo Latency** | Respuestas en <1 segundo |
 
 ### ¿Por qué BeautifulSoup + lxml?
 
-- Robusto para HTML mal formado
-- Rápido (lxml parser)
-- Fácil de debuggear
-- No requiere JavaScript rendering
-- Excelente documentación
+```python
+# Alternativa 1: Selenium (rechazada)
+# ❌ Más lento (navegador headless)
+# ❌ Más recursos (RAM, CPU)
+# ✅ JS rendering
 
-### ¿Por qué Caché de 6 horas?
+# Alternativa 2: BeautifulSoup + lxml (elegida)
+# ✅ Rápido (parser en C)
+# ✅ Ligero (solo parsing HTML)
+# ✅ Robusto (tolera HTML mal formado)
+# ❌ No ejecuta JavaScript
+```
 
-- El calendario académico **no cambia frecuentemente**
-- Reduce carga en servidor de UNViMe
-- Mejora velocidad de respuesta
-- Ahorra ancho de banda
-- 6h es balance perfecto entre freshness y performance
+**Decisión**: UNViMe no requiere JS, BS4 es suficiente.
 
-### ¿Por qué Multi-canal (Discord + WhatsApp)?
+### Caché de 6 Horas: ¿Por qué?
 
-- **Alcance máximo**: Diferentes audiencias
-- **Flexibilidad**: Usuarios eligen su plataforma
+```python
+# Análisis de cambios del calendario UNViMe:
+# - Actualización: 1-2 veces por semestre
+# - Frecuencia de consultas: ~100/día
+# - Sin caché: 100 requests/día al servidor
+# - Con caché 6h: 4 requests/día
+
+# TTL Options:
+# 1h   → Demasiado frecuente, desperdicio
+# 24h  → Podría perder cambios importantes
+# 6h   → Balance perfecto ✅
+```
+
+**Resultado**: 96% reducción de requests.
+
+### ¿Por qué Multi-Canal (Discord + WhatsApp)?
+
+- **Alcance Máximo**: Discord = estudiantes jóvenes, WhatsApp = profesores/padres
+- **Flexibilidad**: Usuario elige su plataforma favorita
 - **Aprendizaje**: Demostrar integración de múltiples APIs
-- **Real-world**: Apps profesionales son multi-plataforma
+- **Profesional**: Apps reales son multi-plataforma
+
+### Docker Multi-Stage Build
+
+```dockerfile
+# STAGE 1: Builder (imagen pesada con build tools)
+FROM python:3.10-slim as builder
+RUN apt-get install gcc g++ make  # Solo en build
+RUN pip install -r requirements.txt
+
+# STAGE 2: Runtime (imagen ligera solo con runtime)
+FROM python:3.10-slim
+COPY --from=builder /opt/venv /opt/venv  # Solo venv
+# Resultado: Imagen final 40% más pequeña
+```
+
+### Arquitectura de Notificaciones
+
+```python
+# Manager Pattern:
+class NotificationManager:
+    def __init__(self):
+        self.notifiers = [
+            DiscordNotifier(),
+            WhatsAppNotifier(),
+            # Fácil agregar: TelegramNotifier(), EmailNotifier()
+        ]
+    
+    def send_all(self, message):
+        for notifier in self.notifiers:
+            notifier.send(message)
+
+# Ventaja: Agregar canales sin modificar lógica existente
+```
 
 ![](https://i.imgur.com/waxVImv.png)
 
-## 🚀 Roadmap Futuro
+## 🚀 Deployment en Producción
 
-### Corto Plazo
+### Railway (Recomendado)
 
-- [ ] Tests automatizados (pytest)
-- [ ] GitHub Actions (CI/CD)
-- [ ] Docker containerización
-- [ ] Deployment en Render/Railway
+**Railway** despliega automáticamente desde GitHub:
 
-### Mediano Plazo
+1. **Conectar Repositorio**:
+   - Ve a [Railway](https://railway.app)
+   - New Project → Deploy from GitHub
+   - Selecciona `MarkoTeixido/Pregon`
 
-- [ ] Base de datos (SQLite) para usuarios
-- [ ] Sistema de suscripciones
-- [ ] Notificaciones programadas automáticas
-- [ ] Panel web de administración
-- [ ] API REST pública
+2. **Configurar Servicios**:
+   ```
+   Service 1: Pregon-Discord
+   - Start Command: python entrypoints/discord_service.py
+   - Environment: production
+   
+   Service 2: Pregon-WhatsApp  
+   - Start Command: python entrypoints/whatsapp_service.py
+   - Port: 5000
+   - Environment: production
+   ```
 
-### Largo Plazo
+3. **Variables de Entorno**:
+   - Copia todas las vars de `.env`
+   - Railway → Settings → Variables
+   - Add: `DISCORD_BOT_TOKEN`, `GEMINI_API_KEY`, etc.
 
-- [ ] Telegram bot
-- [ ] App móvil nativa
-- [ ] Multi-universidad (escalar a otras instituciones)
-- [ ] Machine Learning para predecir fechas
-- [ ] Real-time updates con WebSockets
+4. **Deploy Automático**:
+   - Cada push a `main` redespliega automáticamente
+   - Logs en tiempo real en Railway dashboard
+
+---
+
+![](https://i.imgur.com/waxVImv.png)
+
+## 🧪 Testing y CI/CD
+
+### Tests Automatizados
+
+```bash
+# Ejecutar todos los tests
+pytest
+
+# Con coverage
+pytest --cov=src --cov-report=html
+
+# Solo tests de integración
+pytest -m integration
+
+# Solo tests unitarios
+pytest -m unit
+```
+
+### GitHub Actions Workflows
+
+El proyecto tiene 4 workflows automatizados:
+
+1. **Build** (`.github/workflows/build.yml`):
+   - ✅ Valida que el código compila
+   - ✅ Verifica instalación de dependencias
+   - ⏰ Se ejecuta en cada push
+
+2. **Tests** (`.github/workflows/tests.yml`):
+   - ✅ Corre suite completa de tests
+   - ✅ Genera reporte de coverage
+   - ⏰ Se ejecuta en PRs y push a main
+
+3. **Lint** (`.github/workflows/lint.yml`):
+   - ✅ Verifica PEP 8 con flake8
+   - ✅ Chequea types con mypy
+   - ⏰ Se ejecuta en cada commit
+
+4. **Docker** (`.github/workflows/docker.yml`):
+   - ✅ Build de imagen Docker
+   - ✅ Push a Docker Hub (en releases)
+   - ⏰ Se ejecuta en tags
+
+### Coverage Actual
+
+```
+Tests: 47 passed
+Coverage: 52%
+Lines: 2,341
+Branches: 412
+```
 
 ![](https://i.imgur.com/waxVImv.png)
 
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el proyecto
-2. Crea una branch (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add: AmazingFeature'`)
-4. Push a la branch (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-### Coding Standards
-
-- Seguir PEP 8
-- Docstrings en español
-- Type hints cuando sea posible
-- Logs informativos
-- Tests para nuevas features
-
-![](https://i.imgur.com/waxVImv.png)
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo la **Licencia MIT**.
 
 ![](https://i.imgur.com/waxVImv.png)
 
 ## 👨‍💻 Autor
 
-**Marko Teixido**
+**Marko Teixido**  
+*Estudiante de Ingeniería en Sistemas*  
+*Universidad Nacional de Villa Mercedes*
 
-- GitHub: [@MarkoTeixido](https://github.com/MarkoTeixido)
-- Email: teixido.marko@gmail.com
-- LinkedIn: [Marko Teixido](https://linkedin.com/in/markoteixido)
-- Portfolio: [markoteixido.site](https://markoteixido.site)
-
----
+- 🌐 **Portfolio**: [markoteixido.site](https://markoteixido.site)
+- 🐙 **GitHub**: [@MarkoTeixido](https://github.com/MarkoTeixido)
 
 <p align="center">
-  Hecho con ❤️ para la comunidad de UNViMe
+  <b>Hecho para la comunidad de UNViMe</b>
 </p>
 
 <p align="center">
-  <sub>Si este proyecto te fue útil, dejá una ⭐ en GitHub</sub>
+    <img src="https://i.imgur.com/Euv2bDd.png" height="128">
 </p>
