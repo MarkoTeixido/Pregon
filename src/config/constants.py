@@ -61,11 +61,11 @@ EMOJIS_CATEGORIAS = {
 # Palabras clave para categorización
 PALABRAS_CLAVE_CATEGORIAS = {
     CategoriaEvento.EXAMEN: ['examen', 'final', 'mesa', 'evaluación', 'exámenes'],
-    CategoriaEvento.FERIADO: ['feriado', 'asueto', 'no laborable', 'día nacional', 'soberanía'],
+    CategoriaEvento.FERIADO: ['feriado', 'asueto', 'no laborable', 'día nacional', 'soberanía', 'navidad', 'inmaculada', 'fundación de villa mercedes', 'año nuevo'],
     CategoriaEvento.ACADEMICO: ['inicio', 'comienzo', 'fin', 'cuatrimestre', 'clases'],
     CategoriaEvento.RECESO: ['receso', 'vacaciones'],
     CategoriaEvento.ADMINISTRATIVO: ['inscripción', 'inscripciones', 'preinscripción'],
-    CategoriaEvento.INSTITUCIONAL: ['aniversario', 'fundación', 'día de', 'día del', 'navidad', 'inmaculada', 'claustro']
+    CategoriaEvento.INSTITUCIONAL: ['aniversario', 'fundación', 'día de', 'día del', 'claustro']
 }
 
 # Selectores CSS para scraping
